@@ -1,6 +1,22 @@
 # ethNote
 a note web app built on ethereum
 
+## API book
+
+Contract Methods: isExistUsername, createUser, getUserCount, setNote, getNote
+
+GET / static RETURN{front-page}
+
+POST /signup {username: string} RETURN{label: bool, msg: string}
+
+POST /signin {username: string} RETURN{label: bool, msg: string}
+
+GET /getNote/{username} RETURN{label: bool, msg: string, note: string}
+
+POST /updateNote/{username} {note: string} RETURN{label: bool, msg: string}
+
+GET /getUserCount RETURN{userCount: int}
+
 
 ## 2018-12-24
 
@@ -12,8 +28,15 @@ a note web app built on ethereum
 ### 运行
 
 * 私链geth：
+
 ```
 geth --networkid 999 --datadir "E:\Course\BlockChain\Eth-Private\privateData"  --rpc --rpcaddr 0.0.0.0 --rpcport 10070 --rpcapi "personal,db,eth,net,web3,admin,debug,miner,shh,txpool" --port 10071 --rpccorsdomain "*" --nodiscover console
+```
+```
+personal.unlockAccount(eth.accounts[0], "123456")
+```
+```
+miner.start()
 ```
 
 * 部署合约：已经部署好了，abi和address已经放到app.js中了，不要再改了。
